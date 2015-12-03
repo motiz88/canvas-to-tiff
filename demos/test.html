@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Test canvas-to-tiff</title>
+	<style>
+		body {background:#555;color:#ddd;font-family:sans-serif}
+		canvas {border:1px solid #000}
+		button {font:bold 14px sans-serif;padding:5px}
+		img {position:fixed;right:20px;bottom:20px}
+		a {color:#ff7}
+		h2 {font:normal 28px sans-serif}
+	</style>
+</head>
+<body>
+	<h2>Convert and save TIFF to system via canvas-to-tiff</h2>
+	<label><input type="checkbox" id="little-endian"> Little-endian</label>
+	<button>Save as TIFF</button> <a></a><br><br>
+	<canvas width="640" height="400"></canvas>
+	<img src="data:image/png;base64,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">
+<script src="../src/canvastotiff.js"></script>
+<script>
+
+	var canvas = document.querySelector("canvas"),
+		ctx = canvas.getContext("2d"),
+		w = canvas.width,
+		h = canvas.height,
+		isIE = typeof AudioContext === "undefined" && typeof webkitAudioContext === "undefined",
+		img = new Image,
+		btn = document.querySelector("button");
+
+	img.onload = function() {
+		ctx.drawImage(this, 0, 0, canvas.width, canvas.height);
+		btn.onclick = saveTIFF;
+		if (isIE) btn.innerHTML = "Produce TIFF";
+	};
+
+	function saveTIFF() {
+
+		// Convert canvas to TIFF as an Object URL
+		CanvasToTIFF.toObjectURL(canvas, function(url) {
+
+			// for standard browsers, redirect to data-url so user can download
+			window.location.href = url;
+
+			// for IE, manually select image to download...
+			if (isIE) {
+				var a = btn = document.querySelector("a");
+				a.innerHTML = "Right-click this link to download";
+				a.href = url;
+			}
+		}, {    // options
+			littleEndian: !!document.querySelector("#little-endian").checked,
+			dpi: 72     // does of course not affect the image itself, but is used for arbitrary size relations (optional)
+		});
+	}
+
+	img.src = "gfx/test.jpg";
+
+</script>
+</body>
+</html>

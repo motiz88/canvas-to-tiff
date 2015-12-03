@@ -1,0 +1,17 @@
+Change log for canvas-to-tiff
+-----------------------------
+
+0.3.0 ALPHA
+ADD: Options: dpi, dpiX, dpiY
+CHG: Some internal refactoring
+
+0.2.0 ALPHA
+ADD: Option: "littleEndian" to produce little-endian TIFFs (default big-endian)
+FIX: Callback wasn't async
+FIX: Removed some test "residue" making file a few bytes longer
+
+0.1.0 ALPHA
+NEW: Initial release
+
+
+(c) Epistemex 2015

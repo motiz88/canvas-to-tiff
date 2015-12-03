@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>canvas-to-tiff Namespace: CanvasToTIFF</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.dark.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.cerulean.css">
+
+</head>
+
+<body>
+<div class="container-fluid">
+	<div class="navbar navbar-fixed-top ">
+		<div class="navbar-inner">
+			<a class="brand" href="index.html">canvas-to-tiff</a>
+			<ul class="nav">
+				
+				<li class="dropdown">
+					<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b
+						class="caret"></b></a>
+
+					<ul class="dropdown-menu ">
+						
+						<li>
+							<a href="CanvasToTIFF.html">CanvasToTIFF</a>
+						</li>
+						
+
+					</ul>
+				</li>
+				
+			</ul>
+		</div>
+	</div>
+
+	<div class="row-fluid">
+
+		
+		<div class="span8">
+			
+				<div id="main">
+					
+
+
+	<h1 class="page-title">Namespace: CanvasToTIFF</h1>
+<section>
+
+<header>
+    <h2>
+    CanvasToTIFF
+    </h2>
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+
+    
+        
+            <div class="description"><p>Static helper object that can convert a CORS-compliant canvas element
+to a 32-bits TIFF file (buffer, Blob and data-URI). The TIFF is by
+default saved in big-endian format with interleaved RGBA data.</p></div>
+        
+
+        
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
+
+        <dl>
+            
+<dt>
+    <h4 class="name" id=".toArrayBuffer"><span class="type-signature">&lt;static> </span>toArrayBuffer<span class="signature">(canvas, callback, <span class="optional">options</span>)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Convert a canvas element to ArrayBuffer containing a TIFF file
+with support for alpha. The call is asynchronous
+so a callback must be provided.</p>
+<p>Note that CORS requirement must be fulfilled.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>canvas</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLCanvasElement</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>the canvas element to convert</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>called when conversion is done. Argument is ArrayBuffer</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>an option object</p>
+                <h6>Properties</h6>
+                
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+		<th>Default</th>
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>littleEndian</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">boolean</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    false
+                
+                </td>
+            
+
+            <td class="description last"><p>set to true to produce a little-endian based TIFF</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>dpi</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    96
+                
+                </td>
+            
+
+            <td class="description last"><p>DPI for both X and Y directions. Default 96 DPI (PPI).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>dpiX</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    96
+                
+                </td>
+            
+
+            <td class="description last"><p>DPI for X directions (overrides options.dpi).</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>dpiY</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">number</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+                <td class="default">
+                
+                    96
+                
+                </td>
+            
+
+            <td class="description last"><p>DPI for Y directions (overrides options.dpi).</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+            </td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id=".toBlob"><span class="type-signature">&lt;static> </span>toBlob<span class="signature">(canvas, callback, <span class="optional">options</span>)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Converts a canvas to TIFF file, returns a Blob representing the
+file. This can be used with URL.createObjectURL(). The call is
+asynchronous so a callback must be provided.</p>
+<p>Note that CORS requirement must be fulfilled.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>canvas</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLCanvasElement</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>the canvas element to convert</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>called when conversion is done. Argument is a Blob</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>an option object - see toArrayBuffer for details</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id=".toDataURL"><span class="type-signature">&lt;static> </span>toDataURL<span class="signature">(canvas, callback, <span class="optional">options</span>)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Converts the canvas to a data-URI representing a BMP file. The
+call is asynchronous so a callback must be provided.</p>
+<p>Note that CORS requirement must be fulfilled.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>canvas</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLCanvasElement</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>the canvas element to convert</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>called when conversion is done. Argument is an data-URI (string)</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>an option object - see toArrayBuffer for details</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id=".toObjectURL"><span class="type-signature">&lt;static> </span>toObjectURL<span class="signature">(canvas, callback, <span class="optional">options</span>)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Converts a canvas to TIFF file, returns an ObjectURL (for Blob)
+representing the file. The call is asynchronous so a callback
+must be provided.</p>
+<p><strong>Important</strong>: To avoid memory-leakage you must revoke the returned
+ObjectURL when no longer needed:</p>
+<pre class="prettyprint source"><code>var _URL = self.URL || self.webkitURL || self;
+_URL.revokeObjectURL(url);</code></pre><p>Note that CORS requirement must be fulfilled.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+		<th>Argument</th>
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>canvas</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">HTMLCanvasElement</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>the canvas element to convert</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>callback</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">function</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>called when conversion is done. Argument is a Blob</p></td>
+        </tr>
+
+	
+
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+                <td class="attributes">
+                
+                    &lt;optional><br>
+                
+
+                
+
+                
+                </td>
+            
+
+            
+
+            <td class="description last"><p>an option object - see toArrayBuffer for details</p></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        </dl>
+    
+
+    
+
+    
+</article>
+
+</section>
+
+
+
+
+				</div>
+
+				<div class="clearfix"></div>
+				<footer>
+					
+					<p><b><a href='https://github.com/epistemex/'>Epistemex at GitHib</a></b></p>
+					<br />
+					
+					
+		<span class="copyright">
+		Copyright &copy; 2015 Epistemex
+		</span>
+					<br />
+					
+		<span class="jsdoc-message">
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.1</a>
+		on Wed Dec 2nd 2015 using the <a
+			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
+		</span>
+				</footer>
+			</div>
+
+			
+			<div class="span3">
+				<div id="toc"></div>
+			</div>
+			
+			<br clear="both">
+		</div>
+
+	</div>
+	<!--<script src="scripts/sunlight.js"></script>-->
+	<script src="scripts/docstrap.lib.js"></script>
+	<script src="scripts/bootstrap-dropdown.js"></script>
+	<script src="scripts/toc.js"></script>
+
+	<script>
+		$( function () {
+			$( "[id*='$']" ).each( function () {
+				var $this = $( this );
+
+				$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+			} );
+
+			$( "#toc" ).toc( {
+				anchorName  : function ( i, heading, prefix ) {
+					return $( heading ).attr( "id" ) || ( prefix + i );
+				},
+				selectors   : "h1,h2,h3,h4",
+				showAndHide : false,
+				scrollTo    : "100px"
+			} );
+
+			$( "#toc>ul" ).addClass( "nav nav-pills nav-stacked" );
+			$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+			$( '.dropdown-toggle' ).dropdown();
+//			$( ".tutorial-section pre, .readme-section pre" ).addClass( "sunlight-highlight-javascript" ).addClass( "linenums" );
+
+			$( ".tutorial-section pre, .readme-section pre" ).each( function () {
+				var $this = $( this );
+
+				var example = $this.find( "code" );
+				exampleText = example.html();
+				var lang = /{@lang (.*?)}/.exec( exampleText );
+				if ( lang && lang[1] ) {
+					exampleText = exampleText.replace( lang[0], "" );
+					example.html( exampleText );
+					lang = lang[1];
+				} else {
+					lang = "javascript";
+				}
+
+				if ( lang ) {
+
+					$this
+						.addClass( "sunlight-highlight-" + lang )
+						.addClass( "linenums" )
+						.html( example.html() );
+
+				}
+			} );
+
+			Sunlight.highlightAll( {
+				lineNumbers : false,
+				showMenu : true,
+				enableDoclinks : true
+			} );
+		} );
+	 </script>
+
+
+
+	<!--Navigation and Symbol Display-->
+	
+
+
+	<!--Google Analytics-->
+	
+
+</body>
+</html>
