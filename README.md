@@ -1,8 +1,8 @@
 ﻿canvas-to-tiff
 ==============
 
-Converts a HTML5 canvas bitmap to a TIFF file (blob) that can be saved
-on user's computer or transferred to server.
+Converts a HTML5 canvas bitmap to a TIFF file (blob, data-uri, array)
+that can be saved on user's computer or transferred to server.
 
 The TIFF file is standard compliant (baseline) and support RGB + alpha channel.
 
@@ -33,7 +33,7 @@ Install
 - Download [zip archive](https://github.com/epistemex/canvas-to-tiff/archive/master.zip) and extract.
 - [canvastotiff.min.js](https://raw.githubusercontent.com/epistemex/canvas-to-tiff/master/canvastotiff.min.js)
 
-	
+
 Usage
 -----
 
@@ -67,7 +67,11 @@ To convert it to an ArrayBuffer that can be sent over the net:
         // buffer is ArrayBuffer with the TIFF file
     });
 
-IMPORTANT: As with with ordinary canvas, cross-origin resource sharing 
+Setting an error handler (before calling other operations):
+
+    CanvasToTIFF.setErrorHandler(myErrorHandlerFunc);
+
+**NOTE:** As with with ordinary canvas, cross-origin resource sharing 
 (CORS) requirements must be fulfilled.
 
 
@@ -83,6 +87,6 @@ License
 Released under [MIT license](http://choosealicense.com/licenses/mit/). You may use this class in both commercial and non-commercial projects provided that full header (minified and developer versions) is included.
 
 
-*&copy; Epistemex 2015*
+*&copy; Epistemex 2015-2016*
  
 ![Epistemex](http://i.imgur.com/wZSsyt8.png)

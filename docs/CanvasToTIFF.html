@@ -64,9 +64,7 @@
 
     
         
-            <div class="description"><p>Static helper object that can convert a CORS-compliant canvas element
-to a 32-bits TIFF file (buffer, Blob and data-URI). The TIFF is by
-default saved in big-endian format with interleaved RGBA data.</p></div>
+            <div class="description"><p>Static helper object that can convert a CORS-compliant canvas element<br>to a 32-bits TIFF file (buffer, Blob and data-URI). The TIFF is by<br>default saved in big-endian format with interleaved RGBA data.</p></div>
         
 
         
@@ -123,6 +121,116 @@ default saved in big-endian format with interleaved RGBA data.</p></div>
         <dl>
             
 <dt>
+    <h4 class="name" id=".setErrorHandler"><span class="type-signature">&lt;static> </span>setErrorHandler<span class="signature">(fn)</span><span class="type-signature"></span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Add error handler (function) in case of any error</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params table table-striped">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+
+		<th>Type</th>
+
+		
+
+		
+
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+
+	<tbody>
+	
+
+        <tr>
+            
+                <td class="name"><code>fn</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+	
+	</tbody>
+</table>
+
+    
+    
+    
+<dl class="details">
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+
+	
+
+	
+
+	
+
+	
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+</dd>
+
+        
+            
+<dt>
     <h4 class="name" id=".toArrayBuffer"><span class="type-signature">&lt;static> </span>toArrayBuffer<span class="signature">(canvas, callback, <span class="optional">options</span>)</span><span class="type-signature"></span></h4>
     
     
@@ -131,9 +239,7 @@ default saved in big-endian format with interleaved RGBA data.</p></div>
     
     
     <div class="description">
-        <p>Convert a canvas element to ArrayBuffer containing a TIFF file
-with support for alpha. The call is asynchronous
-so a callback must be provided.</p>
+        <p>Convert a canvas element to ArrayBuffer containing a TIFF file<br>with support for alpha. The call is asynchronous<br>so a callback must be provided.</p>
 <p>Note that CORS requirement must be fulfilled.</p>
     </div>
     
@@ -509,9 +615,7 @@ so a callback must be provided.</p>
     
     
     <div class="description">
-        <p>Converts a canvas to TIFF file, returns a Blob representing the
-file. This can be used with URL.createObjectURL(). The call is
-asynchronous so a callback must be provided.</p>
+        <p>Converts a canvas to TIFF file, returns a Blob representing the<br>file. This can be used with URL.createObjectURL(). The call is<br>asynchronous so a callback must be provided.</p>
 <p>Note that CORS requirement must be fulfilled.</p>
     </div>
     
@@ -701,8 +805,7 @@ asynchronous so a callback must be provided.</p>
     
     
     <div class="description">
-        <p>Converts the canvas to a data-URI representing a BMP file. The
-call is asynchronous so a callback must be provided.</p>
+        <p>Converts the canvas to a data-URI representing a BMP file. The<br>call is asynchronous so a callback must be provided.</p>
 <p>Note that CORS requirement must be fulfilled.</p>
     </div>
     
@@ -892,11 +995,8 @@ call is asynchronous so a callback must be provided.</p>
     
     
     <div class="description">
-        <p>Converts a canvas to TIFF file, returns an ObjectURL (for Blob)
-representing the file. The call is asynchronous so a callback
-must be provided.</p>
-<p><strong>Important</strong>: To avoid memory-leakage you must revoke the returned
-ObjectURL when no longer needed:</p>
+        <p>Converts a canvas to TIFF file, returns an ObjectURL (for Blob)<br>representing the file. The call is asynchronous so a callback<br>must be provided.</p>
+<p><strong>Important</strong>: To avoid memory-leakage you must revoke the returned<br>ObjectURL when no longer needed:</p>
 <pre class="prettyprint source"><code>var _URL = self.URL || self.webkitURL || self;
 _URL.revokeObjectURL(url);</code></pre><p>Note that CORS requirement must be fulfilled.</p>
     </div>
@@ -1094,7 +1194,7 @@ _URL.revokeObjectURL(url);</code></pre><p>Note that CORS requirement must be ful
 				<div class="clearfix"></div>
 				<footer>
 					
-					<p><b><a href='https://github.com/epistemex/'>Epistemex at GitHib</a></b></p>
+					<p><b><a href='https://github.com/epistemex/'>Epistemex at GitHub</a></b></p>
 					<br />
 					
 					
@@ -1104,8 +1204,8 @@ _URL.revokeObjectURL(url);</code></pre><p>Note that CORS requirement must be ful
 					<br />
 					
 		<span class="jsdoc-message">
-		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.3.1</a>
-		on Wed Dec 2nd 2015 using the <a
+		Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a>
+		on Fri Jan 8th 2016 using the <a
 			href="https://github.com/terryweiss/docstrap">DocStrap template</a>.
 		</span>
 				</footer>

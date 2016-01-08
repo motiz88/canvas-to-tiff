@@ -1,6 +1,6 @@
 /*!
-	canvas-to-tiff version 0.3.0 ALPHA
-	By Epistemex (c) 2015
+	canvas-to-tiff version 1.0.0
+	By Epistemex (c) 2015-2016
 	www.epistemex.com
 	MIT License (this header required)
 */
@@ -14,6 +14,24 @@
  * @namespace
  */
 var CanvasToTIFF = {
+
+	/**
+	 * @private
+	 */
+	_dly: 9,
+
+	/**
+	 * @private
+	 */
+	_error: null,
+
+	/**
+	 * Add error handler (function) in case of any error
+	 * @param fn
+	 */
+	setErrorHandler: function(fn) {
+		this._error = fn
+	},
 
 	/**
 	 * Convert a canvas element to ArrayBuffer containing a TIFF file
@@ -35,85 +53,92 @@ var CanvasToTIFF = {
 
 		options = options || {};
 
-		var w          = canvas.width,
-			h          = canvas.height,
-			offset     = 0,
-			iOffset    = 258, // todo calc based on offset field length, add to final offset when compiled
-			//iOffsetPtr,
-			entries	   = 0,
-			offsetList = [],
-			idfOffset,
-			sid        = "\x63\x61\x6e\x76\x61\x73\x2d\x74\x6f\x2d\x74\x69\x66\x66\x20\x30\x2e\x34\0",
-			lsb        = !!options.littleEndian,
-			dpiX	   = +(options.dpiX || options.dpi || 96)|0,
-			dpiY	   = +(options.dpiY || options.dpi || 96)|0,
-			idata      = canvas.getContext("2d").getImageData(0, 0, w, h),
-			length     = idata.data.length,
-			fileLength = iOffset + length,
-			file       = new ArrayBuffer(fileLength),
-			file8      = new Uint8Array(file),
-			view       = new DataView(file),
-			pos        = 0,
-			date       = new Date(),
-			dateStr;
+		var me = this;
 
-		// Header
-		set16(lsb ? 0x4949 : 0x4d4d);							// II or MM
-		set16(42);												// magic 42
-		set32(8);												// offset to first IFD
+		try {
+			var w          = canvas.width,
+				h          = canvas.height,
+				offset     = 0,
+				iOffset    = 258, // todo calc based on offset field length, add to final offset when compiled
+				//iOffsetPtr,
+				entries	   = 0,
+				offsetList = [],
+				idfOffset,
+				sid        = "\x63\x61\x6e\x76\x61\x73\x2d\x74\x6f\x2d\x74\x69\x66\x66\x20\x30\x2e\x34\0",
+				lsb        = !!options.littleEndian,
+				dpiX	   = +(options.dpiX || options.dpi || 96)|0,
+				dpiY	   = +(options.dpiY || options.dpi || 96)|0,
+				idata      = canvas.getContext("2d").getImageData(0, 0, w, h),
+				length     = idata.data.length,
+				fileLength = iOffset + length,
+				file       = new ArrayBuffer(fileLength),
+				file8      = new Uint8Array(file),
+				view       = new DataView(file),
+				pos        = 0,
+				date       = new Date(),
+				dateStr;
 
-		// IFD
-		addIDF();												// IDF start
-		addEntry(0xfe, 4, 1, 0);								// NewSubfileType
-		addEntry(0x100, 4, 1, w);								// ImageWidth
-		addEntry(0x101, 4, 1, h);								// ImageLength (height)
-		addEntry(0x102, 3, 4, offset, 8);						// BitsPerSample
-		addEntry(0x103, 3, 1, 1);								// Compression
-		addEntry(0x106, 3, 1, 2);								// PhotometricInterpretation: RGB
-		addEntry(0x111, 4, 1, iOffset, 0);						// StripOffsets
-		addEntry(0x115, 3, 1, 4);								// SamplesPerPixel
-		addEntry(0x117, 4, 1, length);							// StripByteCounts
-		addEntry(0x11a, 5, 1, offset, 8);						// XResolution
-		addEntry(0x11b, 5, 1, offset, 8);						// YResolution
-		addEntry(0x128, 3, 1, 2);								// ResolutionUnit: inch
-		addEntry(0x131, 2, sid.length, offset, getStrLen(sid));	// sid
-		addEntry(0x132, 2, 0x14, offset, 0x14);					// Datetime
-		addEntry(0x152, 3, 1, 2);								// ExtraSamples
-		endIDF();
+			// Header
+			set16(lsb ? 0x4949 : 0x4d4d);							// II or MM
+			set16(42);												// magic 42
+			set32(8);												// offset to first IFD
 
-		// Fields section > long ---------------------------
+			// IFD
+			addIDF();												// IDF start
+			addEntry(0xfe, 4, 1, 0);								// NewSubfileType
+			addEntry(0x100, 4, 1, w);								// ImageWidth
+			addEntry(0x101, 4, 1, h);								// ImageLength (height)
+			addEntry(0x102, 3, 4, offset, 8);						// BitsPerSample
+			addEntry(0x103, 3, 1, 1);								// Compression
+			addEntry(0x106, 3, 1, 2);								// PhotometricInterpretation: RGB
+			addEntry(0x111, 4, 1, iOffset, 0);						// StripOffsets
+			addEntry(0x115, 3, 1, 4);								// SamplesPerPixel
+			addEntry(0x117, 4, 1, length);							// StripByteCounts
+			addEntry(0x11a, 5, 1, offset, 8);						// XResolution
+			addEntry(0x11b, 5, 1, offset, 8);						// YResolution
+			addEntry(0x128, 3, 1, 2);								// ResolutionUnit: inch
+			addEntry(0x131, 2, sid.length, offset, getStrLen(sid));	// sid
+			addEntry(0x132, 2, 0x14, offset, 0x14);					// Datetime
+			addEntry(0x152, 3, 1, 2);								// ExtraSamples
+			endIDF();
 
-		// BitsPerSample (2x4), 8,8,8,8
-		set32(0x00080008);
-		set32(0x00080008);
+			// Fields section > long ---------------------------
 
-		// StripOffset to bitmap data
-		//set32(iOffset);
+			// BitsPerSample (2x4), 8,8,8,8
+			set32(0x00080008);
+			set32(0x00080008);
 
-		// StripByteCounts
-		//set32(length);
+			// StripOffset to bitmap data
+			//set32(iOffset);
 
-		// XRes PPI
-		set32(dpiX);
-		set32(1);
+			// StripByteCounts
+			//set32(length);
 
-		// YRes PPI
-		set32(dpiY);
-		set32(1);
+			// XRes PPI
+			set32(dpiX);
+			set32(1);
 
-		// sid
-		setStr(sid);
+			// YRes PPI
+			set32(dpiY);
+			set32(1);
 
-		// date
-		dateStr = date.getFullYear() + ":" + pad2(date.getMonth() + 1) + ":" + pad2(date.getDate()) + " ";
-		dateStr += pad2(date.getHours()) + ":" + pad2(date.getMinutes()) + ":" + pad2(date.getSeconds());
-		setStr(dateStr);
+			// sid
+			setStr(sid);
 
-		// Image data here (todo if very large, split into block based copy)
-		file8.set(idata.data, iOffset);
+			// date
+			dateStr = date.getFullYear() + ":" + pad2(date.getMonth() + 1) + ":" + pad2(date.getDate()) + " ";
+			dateStr += pad2(date.getHours()) + ":" + pad2(date.getMinutes()) + ":" + pad2(date.getSeconds());
+			setStr(dateStr);
 
-		// make actual async
-		setTimeout(function() { callback(file) }, 4);
+			// Image data here (todo if very large, split into block based copy)
+			file8.set(idata.data, iOffset);
+
+			// make actual async
+			setTimeout(function() { callback(file) }, me._dly);
+		}
+		catch(err) {
+			if (me._error) me._error(err.toString())
+		}
 
 		function pad2(str) {
 			str += "";
@@ -243,7 +268,9 @@ var CanvasToTIFF = {
 	 */
 	toDataURL: function(canvas, callback, options) {
 
-		this.toArrayBuffer(canvas, function(file) {
+		var me = this;
+
+		me.toArrayBuffer(canvas, function(file) {
 			var buffer = new Uint8Array(file),
 				blockSize = 1<<20,
 				block = blockSize,
@@ -258,7 +285,7 @@ var CanvasToTIFF = {
 
 				if (i < l) {
 					block = blockSize;
-					setTimeout(prepBase64, CanvasToTIFF._dly);
+					setTimeout(prepBase64, me._dly);
 				}
 				else {
 					// convert string to Base-64
@@ -270,13 +297,11 @@ var CanvasToTIFF = {
 						base64 += btoa(bs.substr(i, block));
 						i += block;
 						(i < l)
-							? setTimeout(toBase64, CanvasToTIFF._dly)
+							? setTimeout(toBase64, me._dly)
 							: callback("data:image/tiff;base64," + base64);
 					})();
 				}
 			})();
 		}, options || {});
-	},
-
-	_dly: 9
+	}
 };

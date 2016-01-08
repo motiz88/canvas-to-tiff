@@ -1,6 +1,9 @@
 Change log for canvas-to-tiff
 -----------------------------
 
+1.0.0
+ADD: Optional error handler
+
 0.3.0 ALPHA
 ADD: Options: dpi, dpiX, dpiY
 CHG: Some internal refactoring
@@ -14,4 +17,4 @@ FIX: Removed some test "residue" making file a few bytes longer
 NEW: Initial release
 
 
-(c) Epistemex 2015
+(c) Epistemex 2015-2016
